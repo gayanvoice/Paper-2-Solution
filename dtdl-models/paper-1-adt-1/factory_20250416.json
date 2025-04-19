@@ -1,0 +1,28 @@
+{
+    "@id": "dtmi:com:physical_twins:factory;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "factory",
+    "contents": [
+        {
+            "@type": "Relationship",
+            "name": "has_sensor",
+            "target": "dtmi:com:physical_twins:factory:sensor;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_ur_cobot",
+            "target": "dtmi:com:physical_twins:factory:ur_cobot;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_robotiq_gripper",
+            "target": "dtmi:com:physical_twins:factory:robotiq_gripper;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_gom",
+            "target": "dtmi:com:physical_twins:factory:gom;1"
+        }
+    ]
+}

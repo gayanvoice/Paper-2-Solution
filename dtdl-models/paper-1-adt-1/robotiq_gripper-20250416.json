@@ -1,0 +1,185 @@
+{
+  "@id": "dtmi:com:physical_twins:factory:robotiq_gripper;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "robotiq_gripper",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "var_act",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_gto",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_for",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_spe",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_pos",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_sta",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_pre",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_obj",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_flt",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "control_open_gripper",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_close_gripper",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_activate_gripper",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

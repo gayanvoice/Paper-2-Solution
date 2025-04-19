@@ -1,0 +1,19 @@
+{
+    "@id": "dtmi:com:conceptual_twins:factory:position:unloading_position:unloading_position_2;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "unloading_position_2",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "var_has_object",
+            "schema": "boolean",
+            "writable": true
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_item",
+            "target": "dtmi:com:conceptual_twins:company:item;1"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+  "@id": "dtmi:com:conceptual_twins:factory:gom;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "gom",
+  "contents": [
+    {
+        "@type": "Relationship",
+        "name": "has_item",
+        "target": "dtmi:com:conceptual_twins:comapny:item;1"
+    },
+    {
+      "@type": "Property",
+      "name": "var_is_metrology_process_running",
+      "schema": "boolean",
+      "writable": true
+    }
+  ]
+}

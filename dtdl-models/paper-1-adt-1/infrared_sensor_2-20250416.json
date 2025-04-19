@@ -1,0 +1,14 @@
+{
+    "@id": "dtmi:com:physical_twins:factory:sensor:infrared_sensor:infrared_sensor_2;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "infrared_sensor_2",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "var_detect_object",
+            "schema": "boolean",
+            "writable": true
+        }
+    ]
+}

@@ -1,0 +1,96 @@
+{
+    "@id": "dtmi:com:physical_twins:factory:gom;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "gom",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "var_gom_inspect_running",
+            "schema": "boolean",
+            "writable": true
+        },
+        {
+            "@type": "Property",
+            "name": "control_start",
+            "schema": {
+                "@type": "Object",
+                "fields": [
+                    {
+                        "name": "RequestPayload",
+                        "schema": {
+                            "@type": "Object",
+                            "fields": [
+                                {
+                                    "name": "IsCommandRequested",
+                                    "schema": "boolean"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "ResponsePayload",
+                        "schema": {
+                            "@type": "Object",
+                            "fields": [
+                                {
+                                    "name": "Status",
+                                    "schema": "boolean"
+                                },
+                                {
+                                    "name": "Message",
+                                    "schema": "string"
+                                },
+                                {
+                                    "name": "ElapsedTime",
+                                    "schema": "double"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@type": "Property",
+            "name": "control_stop",
+            "schema": {
+                "@type": "Object",
+                "fields": [
+                    {
+                        "name": "RequestPayload",
+                        "schema": {
+                            "@type": "Object",
+                            "fields": [
+                                {
+                                    "name": "IsCommandRequested",
+                                    "schema": "boolean"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "ResponsePayload",
+                        "schema": {
+                            "@type": "Object",
+                            "fields": [
+                                {
+                                    "name": "Status",
+                                    "schema": "boolean"
+                                },
+                                {
+                                    "name": "Message",
+                                    "schema": "string"
+                                },
+                                {
+                                    "name": "ElapsedTime",
+                                    "schema": "double"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

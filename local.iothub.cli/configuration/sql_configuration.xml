@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<sql_configuration>
+    <shared>
+        <connection_string>Driver={ODBC Driver 18 for SQL Server};Server=tcp:paper-2-sqls.database.windows.net,1433;Database=paper-2-sqldb;Uid=paper-2-admin;Pwd=!w5wCSE4QRhQygc;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;</connection_string>
+    </shared>
+</sql_configuration>

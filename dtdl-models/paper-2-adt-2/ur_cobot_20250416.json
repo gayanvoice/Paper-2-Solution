@@ -1,0 +1,19 @@
+{
+    "@id": "dtmi:com:conceptual_twins:factory:ur_cobot;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "ur_cobot",
+    "contents": [
+        {
+            "@type": "Relationship",
+            "name": "has_item",
+            "target": "dtmi:com:conceptual_twins:comapny:item;1"
+        },
+        {
+            "@type": "Property",
+            "name": "var_position",
+            "schema": "string",
+            "writable": true
+        }
+    ]
+}

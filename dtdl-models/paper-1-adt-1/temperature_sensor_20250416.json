@@ -1,0 +1,13 @@
+{
+  "@id": "dtmi:com:physical_twins:factory:sensor:temperature_sensor;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "temperature_sensor",
+  "contents": [
+    {
+        "@type": "Relationship",
+        "name": "has_temperature_sensor_1",
+        "target": "dtmi:com:physical_twins:factory:sensor:temperature_sensor:temperature_sensor_1;1"
+    }
+  ]
+}

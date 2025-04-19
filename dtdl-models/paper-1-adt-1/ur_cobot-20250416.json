@@ -1,0 +1,994 @@
+{
+  "@id": "dtmi:com:physical_twins:factory:ur_cobot;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "ur_cobot",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "var_target_q",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_target_qd",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_target_qdd",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_target_current",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_target_moment",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_current",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_q",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_qd",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_joint_control_output",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_tcp_force",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_joint_temperatures",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_joint_mode",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_tool_accelerometer",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_speed_scaling",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_momentum",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_main_voltage",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_robot_voltage",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_robot_current",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_actual_joint_voltage",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "p0",
+            "schema": "double"
+          },
+          {
+            "name": "p1",
+            "schema": "double"
+          },
+          {
+            "name": "p2",
+            "schema": "double"
+          },
+          {
+            "name": "p3",
+            "schema": "double"
+          },
+          {
+            "name": "p4",
+            "schema": "double"
+          },
+          {
+            "name": "p5",
+            "schema": "double"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "var_runtime_state",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_robot_mode",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_safety_mode",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_analog_io_types",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_io_current",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_tool_mode",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_tool_output_voltage",
+      "schema": "integer",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_tool_output_current",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_analog_out_0",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_analog_out_1",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_digital_out_0",
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_digital_out_1",
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_digital_out_2",
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_digital_out_3",
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_digital_out_4",
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_digital_out_5",
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_digital_out_6",
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "var_standard_digital_out_7",
+      "schema": "boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "control_move_j",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "Base",
+            "schema": "double"
+          },
+          {
+            "name": "Shoulder",
+            "schema": "double"
+          },
+          {
+            "name": "Elbow",
+            "schema": "double"
+          },
+          {
+            "name": "Wrist1",
+            "schema": "double"
+          },
+          {
+            "name": "Wrist2",
+            "schema": "double"
+          },
+          {
+            "name": "Wrist3",
+            "schema": "double"
+          },
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_open_popup",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "PopupText",
+            "schema": "string"
+          },
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_power_on",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_power_off",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_close_popup",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_start_free_drive",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_stop_free_drive",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_close_safety_popup",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "control_unlock_protective_stop",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "RequestPayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "IsCommandRequested",
+                  "schema": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "ResponsePayload",
+            "schema": {
+              "@type": "Object",
+              "fields": [
+                {
+                  "name": "Status",
+                  "schema": "boolean"
+                },
+                {
+                  "name": "Message",
+                  "schema": "string"
+                },
+                {
+                  "name": "ElapsedTime",
+                  "schema": "double"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

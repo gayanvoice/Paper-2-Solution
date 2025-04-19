@@ -1,0 +1,13 @@
+{
+    "@id": "dtmi:com:conceptual_twins:company:unprocessed_item;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "unprocessed_item",
+    "contents": [
+        {
+            "@type": "Relationship",
+            "name": "has_item",
+            "target": "dtmi:com:conceptual_twins:company:item;1"
+        }
+    ]
+}

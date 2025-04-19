@@ -1,0 +1,18 @@
+{
+    "@id": "dtmi:com:conceptual_twins:factory:position;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "position",
+    "contents": [
+        {
+            "@type": "Relationship",
+            "name": "has_unloading_position",
+            "target": "dtmi:com:conceptual_twins:factory:position:unloading_position;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_loading_position",
+            "target": "dtmi:com:conceptual_twins:factory:position:loading_position;1"
+        }
+    ]
+}

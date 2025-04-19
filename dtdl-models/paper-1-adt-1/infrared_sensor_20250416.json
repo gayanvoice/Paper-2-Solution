@@ -1,0 +1,28 @@
+{
+    "@id": "dtmi:com:physical_twins:factory:sensor:infrared_sensor;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "infrared_sensor",
+    "contents": [
+        {
+            "@type": "Relationship",
+            "name": "has_infrared_sensor_1",
+            "target": "dtmi:com:physical_twins:factory:sensor:infrared_sensor:infrared_sensor_1;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_infrared_sensor_2",
+            "target": "dtmi:com:physical_twins:factory:sensor:infrared_sensor:infrared_sensor_2;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_infrared_sensor_3",
+            "target": "dtmi:com:physical_twins:factory:sensor:infrared_sensor:infrared_sensor_3;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_infrared_sensor_4",
+            "target": "dtmi:com:physical_twins:factory:sensor:infrared_sensor:infrared_sensor_4;1"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "@id": "dtmi:com:physical_twins:factory:sensor:illuminance_sensor:illuminance_sensor_1;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "illuminance_sensor_1",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "var_lux",
+            "schema": "double",
+            "writable": true
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+  "@id": "dtmi:com:conceptual_twins:company:item;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "item",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "var_metrology_process_status",
+      "schema": "integer",
+      "writable": true
+    }
+  ]
+}

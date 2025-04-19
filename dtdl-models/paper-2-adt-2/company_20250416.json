@@ -1,0 +1,23 @@
+{
+    "@id": "dtmi:com:conceptual_twins:company;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "company",
+    "contents": [
+        {
+            "@type": "Relationship",
+            "name": "has_processed_item",
+            "target": "dtmi:com:conceptual_twins:company:processed_item;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_ongoing_item",
+            "target": "dtmi:com:conceptual_twins:company:ongoing_item;1"
+        },
+        {
+            "@type": "Relationship",
+            "name": "has_unprocessed_item",
+            "target": "dtmi:com:conceptual_twins:company:unprocessed_item;1"
+        }
+    ]
+}

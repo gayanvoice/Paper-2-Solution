@@ -1,0 +1,14 @@
+{
+    "@id": "dtmi:com:physical_twins:factory:sensor:temperature_sensor:temperature_sensor_1;1",
+    "@context": "dtmi:dtdl:context;2",
+    "@type": "Interface",
+    "displayName": "temperature_sensor_1",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "var_degree_celsius",
+            "schema": "double",
+            "writable": true
+        }
+    ]
+}

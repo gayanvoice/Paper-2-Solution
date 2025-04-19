@@ -1,0 +1,250 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>3521743f-af55-47d5-a7c7-c96370799692</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>local.iothub.cli.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>local.iothub.cli</Name>
+    <RootNamespace>local.iothub.cli</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="core\core_global.py" />
+    <Compile Include="core\core_queue.py" />
+    <Compile Include="core\core_ui.py" />
+    <Compile Include="core\Device.py" />
+    <Compile Include="core\gom.py" />
+    <Compile Include="core\numpy-encorder.py" />
+    <Compile Include="core\robotiq_gripper.py" />
+    <Compile Include="core\ur_cobot.py" />
+    <Compile Include="core\__init__.py" />
+    <Compile Include="controller\primary_client_controller.py" />
+    <Compile Include="controller\__init__.py" />
+    <Compile Include="local.iothub.cli.py" />
+    <Compile Include="cli_ui\ui.py" />
+    <Compile Include="cli_ui\__init__.py" />
+    <Compile Include="model\cobot_model.py" />
+    <Compile Include="model\configuration\gom_iot_configuration.py" />
+    <Compile Include="model\configuration\robotiq_gripper_iot_configuration.py" />
+    <Compile Include="model\configuration\shared_iot_configuration_model.py" />
+    <Compile Include="model\configuration\shared_sql_configuration_model.py" />
+    <Compile Include="model\configuration\ur_cobot_iot_configuration_model.py" />
+    <Compile Include="model\configuration\__init__.py" />
+    <Compile Include="model\iot\PnpProperties.py" />
+    <Compile Include="model\iot\__init__.py" />
+    <Compile Include="model\joint_position_model.py" />
+    <Compile Include="model\move_j_command_model.py" />
+    <Compile Include="model\response\activate_gripper_command_response_model.py" />
+    <Compile Include="model\response\close_gripper_command_response_model.py" />
+    <Compile Include="model\response\close_popup_command_response_model.py" />
+    <Compile Include="model\response\close_safety_popup_command_response_model.py" />
+    <Compile Include="model\response\disable_free_drive_mode_command_response_model.py" />
+    <Compile Include="model\response\disable_teach_mode_command_response_model.py" />
+    <Compile Include="model\response\enable_free_drive_mode_command_response_model.py" />
+    <Compile Include="model\response\enable_teach_mode_command_response_model.py" />
+    <Compile Include="model\response\move_j_command_response_model.py" />
+    <Compile Include="model\response\open_gripper_command_response_model.py" />
+    <Compile Include="model\response\open_popup_command_response_model.py" />
+    <Compile Include="model\response\pause_command_response_model.py" />
+    <Compile Include="model\response\play_command_response_model.py" />
+    <Compile Include="model\response\power_off_command_response_model.py" />
+    <Compile Include="model\response\power_on_command_response_model.py" />
+    <Compile Include="model\response\response_model.py" />
+    <Compile Include="model\response\set_digital_output_command_response_model.py" />
+    <Compile Include="model\response\start_gom_command_response_model.py" />
+    <Compile Include="model\response\stop_gom_command_response_model.py" />
+    <Compile Include="model\response\unlock_protective_stop_command_response_model.py" />
+    <Compile Include="model\response\__init__.py" />
+    <Compile Include="model\test\PayloadResponseModel.py" />
+    <Compile Include="model\test\__init__.py" />
+    <Compile Include="model\__init__.py" />
+    <Compile Include="robotiq_gripper\robotiq_gripper_controller.py" />
+    <Compile Include="robotiq_gripper\__init__.py" />
+    <Compile Include="URBasic\connectionState.py" />
+    <Compile Include="URBasic\dashboard.py" />
+    <Compile Include="URBasic\dataLog.py" />
+    <Compile Include="URBasic\dataLogging.py" />
+    <Compile Include="URBasic\kinematic.py" />
+    <Compile Include="URBasic\manipulation.py" />
+    <Compile Include="URBasic\realTimeClient.py" />
+    <Compile Include="URBasic\robotConnector.py" />
+    <Compile Include="URBasic\robotModel.py" />
+    <Compile Include="URBasic\rtde.py" />
+    <Compile Include="URBasic\urScript.py" />
+    <Compile Include="URBasic\urScriptExt.py" />
+    <Compile Include="URBasic\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.12</Version>
+      <Description>env (Python 3.12 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\local.class.lib\local.class.lib.pyproj">
+      <Name>local.class.lib</Name>
+      <Project>{ff09fd75-3ce8-426d-91ae-b406c2c002ad}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="core\" />
+    <Folder Include="core\__pycache__\" />
+    <Folder Include="cache\" />
+    <Folder Include="cache\log\" />
+    <Folder Include="cli_ui\" />
+    <Folder Include="cli_ui\__pycache__\" />
+    <Folder Include="configuration\" />
+    <Folder Include="controller\" />
+    <Folder Include="model\" />
+    <Folder Include="model\configuration\" />
+    <Folder Include="model\configuration\__pycache__\" />
+    <Folder Include="model\iot\" />
+    <Folder Include="model\response\" />
+    <Folder Include="model\response\__pycache__\" />
+    <Folder Include="model\test\" />
+    <Folder Include="model\__pycache__\" />
+    <Folder Include="robotiq_gripper\" />
+    <Folder Include="robotiq_gripper\__pycache__\" />
+    <Folder Include="URBasic\" />
+    <Folder Include="URBasic\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="core\__pycache__\addqual_global.cpython-311.pyc" />
+    <Content Include="core\__pycache__\addqual_global.cpython-312.pyc" />
+    <Content Include="core\__pycache__\addqual_queue.cpython-311.pyc" />
+    <Content Include="core\__pycache__\addqual_queue.cpython-312.pyc" />
+    <Content Include="core\__pycache__\addqual_ui.cpython-311.pyc" />
+    <Content Include="core\__pycache__\addqual_ui.cpython-312.pyc" />
+    <Content Include="core\__pycache__\Device.cpython-311.pyc" />
+    <Content Include="core\__pycache__\Device.cpython-312.pyc" />
+    <Content Include="core\__pycache__\gom.cpython-312.pyc" />
+    <Content Include="core\__pycache__\robotiq_gripper.cpython-311.pyc" />
+    <Content Include="core\__pycache__\robotiq_gripper.cpython-312.pyc" />
+    <Content Include="core\__pycache__\ur_cobot.cpython-311.pyc" />
+    <Content Include="core\__pycache__\ur_cobot.cpython-312.pyc" />
+    <Content Include="core\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="core\__pycache__\__init__.cpython-312.pyc" />
+    <Content Include="cache\log\UrDataLog.csv" />
+    <Content Include="cache\log\UrEvent.log" />
+    <Content Include="cli_ui\__pycache__\ui.cpython-311.pyc" />
+    <Content Include="cli_ui\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="configuration\iot_configuration.xml" />
+    <Content Include="configuration\log_configuration.xml" />
+    <Content Include="configuration\rtde_configuration.xml" />
+    <Content Include="configuration\sql_configuration.xml" />
+    <Content Include="model\configuration\__pycache__\gom_iot_configuration.cpython-312.pyc" />
+    <Content Include="model\configuration\__pycache__\robotiq_gripper_iot_configuration.cpython-311.pyc" />
+    <Content Include="model\configuration\__pycache__\robotiq_gripper_iot_configuration.cpython-312.pyc" />
+    <Content Include="model\configuration\__pycache__\shared_iot_configuration_model.cpython-311.pyc" />
+    <Content Include="model\configuration\__pycache__\shared_iot_configuration_model.cpython-312.pyc" />
+    <Content Include="model\configuration\__pycache__\shared_sql_configuration_model.cpython-312.pyc" />
+    <Content Include="model\configuration\__pycache__\ur_cobot_iot_configuration_model.cpython-311.pyc" />
+    <Content Include="model\configuration\__pycache__\ur_cobot_iot_configuration_model.cpython-312.pyc" />
+    <Content Include="model\configuration\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="model\configuration\__pycache__\__init__.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\activate_gripper_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\activate_gripper_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\close_gripper_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\close_gripper_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\close_popup_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\close_popup_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\close_safety_popup_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\close_safety_popup_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\disable_free_drive_mode_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\disable_free_drive_mode_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\disable_teach_mode_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\disable_teach_mode_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\enable_free_drive_mode_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\enable_free_drive_mode_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\enable_teach_mode_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\enable_teach_mode_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\move_j_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\move_j_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\open_gripper_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\open_gripper_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\open_popup_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\open_popup_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\pause_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\pause_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\play_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\play_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\power_off_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\power_off_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\power_on_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\power_on_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\set_digital_output_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\start_gom_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\stop_gom_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\unlock_protective_stop_command_response_model.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\unlock_protective_stop_command_response_model.cpython-312.pyc" />
+    <Content Include="model\response\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="model\response\__pycache__\__init__.cpython-312.pyc" />
+    <Content Include="model\__pycache__\joint_position_model.cpython-311.pyc" />
+    <Content Include="model\__pycache__\joint_position_model.cpython-312.pyc" />
+    <Content Include="model\__pycache__\move_j_command_model.cpython-311.pyc" />
+    <Content Include="model\__pycache__\move_j_command_model.cpython-312.pyc" />
+    <Content Include="model\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="model\__pycache__\__init__.cpython-312.pyc" />
+    <Content Include="open_sandbox_iot_client-log.bat" />
+    <Content Include="requirements.txt" />
+    <Content Include="robotiq_gripper\__pycache__\robotiq_gripper_controller.cpython-311.pyc" />
+    <Content Include="robotiq_gripper\__pycache__\robotiq_gripper_controller.cpython-312.pyc" />
+    <Content Include="robotiq_gripper\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="robotiq_gripper\__pycache__\__init__.cpython-312.pyc" />
+    <Content Include="run_sandbox_iot_client.bat" />
+    <Content Include="URBasic\__pycache__\connectionState.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\connectionState.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\dashboard.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\dashboard.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\dataLog.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\dataLog.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\dataLogging.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\dataLogging.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\manipulation.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\manipulation.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\realTimeClient.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\realTimeClient.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\robotConnector.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\robotConnector.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\robotModel.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\robotModel.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\rtde.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\rtde.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\urScript.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\urScript.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\urScriptExt.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\urScriptExt.cpython-312.pyc" />
+    <Content Include="URBasic\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="URBasic\__pycache__\__init__.cpython-312.pyc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

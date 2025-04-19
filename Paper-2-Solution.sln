@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "local.iothub.cli", "local.iothub.cli\local.iothub.cli.pyproj", "{3521743F-AF55-47D5-A7C7-C96370799692}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "local.simulation.cli", "local.simulation.cli\local.simulation.cli.pyproj", "{67B776BE-ADB5-4397-8211-2060A104C745}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "paper-2-net8-egt-fa-1.af", "paper-2-net8-egt-fa-1.af\paper-2-net8-egt-fa-1.af.csproj", "{77FF159C-B629-4ACB-BBA6-1983DE9C148E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure.digitaltwin.cli", "azure.digitaltwin.cli\azure.digitaltwin.cli.csproj", "{62890A3C-DC73-45D3-8E61-AD555FFEBCFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure.gremlin.cli", "azure.gremlin.cli\azure.gremlin.cli.csproj", "{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3521743F-AF55-47D5-A7C7-C96370799692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3521743F-AF55-47D5-A7C7-C96370799692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B776BE-ADB5-4397-8211-2060A104C745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B776BE-ADB5-4397-8211-2060A104C745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77FF159C-B629-4ACB-BBA6-1983DE9C148E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77FF159C-B629-4ACB-BBA6-1983DE9C148E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77FF159C-B629-4ACB-BBA6-1983DE9C148E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77FF159C-B629-4ACB-BBA6-1983DE9C148E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62890A3C-DC73-45D3-8E61-AD555FFEBCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62890A3C-DC73-45D3-8E61-AD555FFEBCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62890A3C-DC73-45D3-8E61-AD555FFEBCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62890A3C-DC73-45D3-8E61-AD555FFEBCFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2BA25452-14CC-4252-8F23-7B18CD992EEA}
+	EndGlobalSection
+EndGlobal

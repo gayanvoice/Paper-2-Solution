@@ -1,0 +1,114 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>67b776be-adb5-4397-8211-2060a104c745</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>local.simulation.cli.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>local.simulation.cli</Name>
+    <RootNamespace>local.simulation.cli</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="controller\primary_client_controller.py" />
+    <Compile Include="controller\ui_controller.py" />
+    <Compile Include="controller\ur_cobot_daemon_controller.py" />
+    <Compile Include="controller\__init__.py" />
+    <Compile Include="local.simulation.cli.py" />
+    <Compile Include="model\ur_cobot_daemon_output_model.py" />
+    <Compile Include="model\__init__.py" />
+    <Compile Include="sensor\analog_sensor.py" />
+    <Compile Include="sensor\digital_sensor.py" />
+    <Compile Include="sensor\illuminance_sensor.py" />
+    <Compile Include="sensor\infrared_sensor.py" />
+    <Compile Include="sensor\temperature_sensor.py" />
+    <Compile Include="sensor\__init__.py" />
+    <Compile Include="wrapper\execute_with_timing_wrapper.py" />
+    <Compile Include="wrapper\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.12</Version>
+      <Description>env (Python 3.12 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="cache\" />
+    <Folder Include="cache\log\" />
+    <Folder Include="configuration\" />
+    <Folder Include="controller\" />
+    <Folder Include="Controller\__pycache__\" />
+    <Folder Include="model\" />
+    <Folder Include="Model\__pycache__\" />
+    <Folder Include="sensor\" />
+    <Folder Include="Sensor\__pycache__\" />
+    <Folder Include="wrapper\" />
+    <Folder Include="Wrapper\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cache\log\UrDataLog.csv" />
+    <Content Include="cache\log\UrEvent.log" />
+    <Content Include="cobot.log" />
+    <Content Include="configuration\log_configuration.xml" />
+    <Content Include="configuration\rtde_configuration.xml" />
+    <Content Include="Controller\__pycache__\dashboard_server_controller.cpython-311.pyc" />
+    <Content Include="Controller\__pycache__\primary_client_controller.cpython-311.pyc" />
+    <Content Include="Controller\__pycache__\primary_client_controller.cpython-312.pyc" />
+    <Content Include="Controller\__pycache__\ui_controller.cpython-312.pyc" />
+    <Content Include="Controller\__pycache__\ur_cobot_daemon_controller.cpython-311.pyc" />
+    <Content Include="Controller\__pycache__\ur_cobot_daemon_controller.cpython-312.pyc" />
+    <Content Include="Controller\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="Controller\__pycache__\__init__.cpython-312.pyc" />
+    <Content Include="dashboard-server-log.log" />
+    <Content Include="Model\__pycache__\dashboard_server_output_model.cpython-311.pyc" />
+    <Content Include="Model\__pycache__\ur_cobot_daemon_output_model.cpython-311.pyc" />
+    <Content Include="Model\__pycache__\ur_cobot_daemon_output_model.cpython-312.pyc" />
+    <Content Include="Model\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="Model\__pycache__\__init__.cpython-312.pyc" />
+    <Content Include="open_local_simulation_cli-log.bat" />
+    <Content Include="requirements.txt" />
+    <Content Include="run_local_simulation_cli.bat" />
+    <Content Include="Sensor\__pycache__\analog_sensor.cpython-311.pyc" />
+    <Content Include="Sensor\__pycache__\analog_sensor.cpython-312.pyc" />
+    <Content Include="Sensor\__pycache__\digital_sensor.cpython-311.pyc" />
+    <Content Include="Sensor\__pycache__\digital_sensor.cpython-312.pyc" />
+    <Content Include="Sensor\__pycache__\illuminance_sensor.cpython-311.pyc" />
+    <Content Include="Sensor\__pycache__\illuminance_sensor.cpython-312.pyc" />
+    <Content Include="Sensor\__pycache__\infrared_sensor.cpython-311.pyc" />
+    <Content Include="Sensor\__pycache__\infrared_sensor.cpython-312.pyc" />
+    <Content Include="Sensor\__pycache__\temperature_sensor.cpython-311.pyc" />
+    <Content Include="Sensor\__pycache__\temperature_sensor.cpython-312.pyc" />
+    <Content Include="Sensor\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="Sensor\__pycache__\__init__.cpython-312.pyc" />
+    <Content Include="Wrapper\__pycache__\execute_with_timing_wrapper.cpython-311.pyc" />
+    <Content Include="Wrapper\__pycache__\execute_with_timing_wrapper.cpython-312.pyc" />
+    <Content Include="Wrapper\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="Wrapper\__pycache__\__init__.cpython-312.pyc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

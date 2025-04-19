@@ -1,0 +1,9 @@
+numpy==2.0.0
+six==1.16.0
+azure-core==1.29.4
+azure-iot-device==2.12.0
+azure-iot-hub==2.6.1
+math3d==4.0.0
+pyfiglet==1.0.2
+uuid6==2024.7.10
+pyodbc==5.2.0
