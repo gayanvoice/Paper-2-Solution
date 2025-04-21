@@ -11,7 +11,7 @@
         public string? OutV { get; set; }
         public string GetLlmInput()
         {
-            return $"{InV} has {Label} to {OutV}";
+            return $"{OutV} {Label} {InV}";
         }
     }
 }

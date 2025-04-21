@@ -1,4 +1,5 @@
 ﻿using azure.gremlin.cli.Enums;
+using azure.gremlin.cli.Models.RequestScript;
 using Gremlin.Net.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -9,12 +10,12 @@ namespace azure.gremlin.cli.Models
     {
         public ResultTypeEnum? ResultType { get; set; }
         public ResponseTypeEnum? ResponseType { get; set; }
-        public GremlinKeyValuePairModel? GremlinKeyValuePair { get; set; }
+        public IRequestScript? RequestScript { get; set; }
         public ICollection<IResultElement>? ResultElementCollection { get; set; }
         public CosmosDbResponseMetadataModel? CosmosDbResponseMetadata { get; set; }
-        public void SetRequest(KeyValuePair<string, string> keyvaluePair)
+        public void SetRequest(IRequestScript requestScript)
         {
-            GremlinKeyValuePair = GremlinKeyValuePairModel.Create(keyvaluePair);
+            RequestScript = requestScript;
         }
         public void SetResponse(ResultSet<dynamic> resultSet)
         {
@@ -52,13 +53,16 @@ namespace azure.gremlin.cli.Models
                 {
                     return "The knowledge graph contains 0 results related to request";
                 }
-                if (ResultElementCollection.Count is 1)
+                else
                 {
-                    IResultElement resultElement = ResultElementCollection.First();
-                    return resultElement.GetLlmInput();
+                    string output = string.Empty;
+                    foreach (IResultElement resultElement in ResultElementCollection)
+                    {
+                        output += resultElement.GetLlmInput() + ". ";
+                    }
+                    return output;
                 }
             }
-            return "The knowledge graph request has failed";
         }
         private IResultElement? CreateResultElement(string json)
         {
