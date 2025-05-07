@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure.digitaltwin.cli", "az
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure.gremlin.cli", "azure.gremlin.cli\azure.gremlin.cli.csproj", "{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "py-trees.cli", "py-trees.cli\py-trees.cli.pyproj", "{33AF3D28-1CAA-40B5-AF6C-ACCE605388D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "paper-2-net8-egt-fa-2-af", "paper-2-net8-egt-fa-2-af\paper-2-net8-egt-fa-2-af.csproj", "{12944413-419F-415D-ADE7-3A9E29C7BC61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,12 @@ Global
 		{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8C2CF06-FAFD-4280-899F-B3ABC971A7BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33AF3D28-1CAA-40B5-AF6C-ACCE605388D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33AF3D28-1CAA-40B5-AF6C-ACCE605388D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12944413-419F-415D-ADE7-3A9E29C7BC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12944413-419F-415D-ADE7-3A9E29C7BC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12944413-419F-415D-ADE7-3A9E29C7BC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12944413-419F-415D-ADE7-3A9E29C7BC61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
