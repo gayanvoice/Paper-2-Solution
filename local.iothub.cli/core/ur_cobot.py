@@ -196,7 +196,7 @@ class URCobot:
                 if self.shared_iot_configuration_model.is_ur_cobot_dev_mode:
                     time.sleep(1)
                 else:
-                    self.ur_script_ext.movej(wait=False,
+                    self.ur_script_ext.movej(wait=True,
                                              q=joint_position_array,
                                              a=move_j_command_model.acceleration,
                                              v=move_j_command_model.velocity,
@@ -221,7 +221,7 @@ class URCobot:
 
     async def move_j_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.move_j_command(request_payload=request_payload)
+        command_response_handler = await self.move_j_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -246,7 +246,7 @@ class URCobot:
 
     async def pause_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.pause_command(request_payload=request_payload)
+        command_response_handler = await self.pause_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -267,7 +267,7 @@ class URCobot:
 
     async def play_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.play_command(request_payload=request_payload)
+        command_response_handler = await self.play_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -288,7 +288,7 @@ class URCobot:
 
     async def close_safety_popup_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.close_safety_popup_command(request_payload=request_payload)
+        command_response_handler = await self.close_safety_popup_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -309,7 +309,7 @@ class URCobot:
 
     async def unlock_protective_stop_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.unlock_protective_stop(request_payload=request_payload)
+        command_response_handler = await self.unlock_protective_stop(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -330,7 +330,7 @@ class URCobot:
 
     async def open_popup_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.open_popup_command(request_payload=request_payload)
+        command_response_handler = await self.open_popup_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -351,7 +351,7 @@ class URCobot:
 
     async def close_popup_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.close_popup_command(request_payload=request_payload)
+        command_response_handler = await self.close_popup_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -372,7 +372,7 @@ class URCobot:
 
     async def power_on_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.power_on_command(request_payload=request_payload)
+        command_response_handler = await self.power_on_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -393,7 +393,7 @@ class URCobot:
 
     async def power_off_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.power_off_command(request_payload=request_payload)
+        command_response_handler = await self.power_off_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -414,7 +414,7 @@ class URCobot:
 
     async def enable_free_drive_mode_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.enable_free_drive_mode_command(request_payload=request_payload)
+        command_response_handler = await self.enable_free_drive_mode_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -435,7 +435,7 @@ class URCobot:
 
     async def disable_free_drive_mode_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.disable_free_drive_mode_command(request_payload=request_payload)
+        command_response_handler = await self.disable_free_drive_mode_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -456,7 +456,7 @@ class URCobot:
 
     async def enable_teach_mode_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.enable_teach_mode_command(request_payload=request_payload)
+        command_response_handler = await self.enable_teach_mode_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -477,7 +477,7 @@ class URCobot:
 
     async def disable_teach_mode_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.disable_teach_mode_command(request_payload=request_payload)
+        command_response_handler = await self.disable_teach_mode_command(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,

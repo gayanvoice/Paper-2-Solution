@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <iot_configuration>
     <shared>
-        <telemetry_delay>30</telemetry_delay>
+        <telemetry_delay>120</telemetry_delay>
         <is_queue_running>1</is_queue_running>
         <is_ur_cobot_dev_mode>0</is_ur_cobot_dev_mode>
         <is_robotiq_gripper_dev_mode>1</is_robotiq_gripper_dev_mode>

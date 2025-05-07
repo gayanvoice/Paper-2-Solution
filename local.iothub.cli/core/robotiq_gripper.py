@@ -145,7 +145,7 @@ class RobotiqGripper:
 
     async def activate_gripper_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.activate_gripper(request_payload=request_payload)
+        command_response_handler = await self.activate_gripper(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -167,7 +167,7 @@ class RobotiqGripper:
 
     async def open_gripper_command_request_handler(self, request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.open_gripper(request_payload=request_payload)
+        command_response_handler = await self.open_gripper(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
@@ -189,7 +189,7 @@ class RobotiqGripper:
 
     async def close_gripper_command_request_handler(self,request_payload):
         host_operation_start_time = datetime.now()
-        command_response_handler = self.close_gripper(request_payload=request_payload)
+        command_response_handler = await self.close_gripper(request_payload=request_payload)
         self.insert_command_event_into_sql_database(uuid=str(self.uuid),
                                                     command_request_handler=json.dumps(request_payload),
                                                     command_response_handler=command_response_handler,
