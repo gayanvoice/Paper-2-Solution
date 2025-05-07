@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "paper_2_net8_egt_fa_2_af": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7214",
+      "launchBrowser": false
+    }
+  }
+}
