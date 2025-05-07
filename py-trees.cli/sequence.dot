@@ -1,0 +1,13 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+Sequence [label="Ⓜ Sequence", shape=box, style=filled, fillcolor=orange, fontsize=9, fontcolor=black];
+"Action 1" [label="Action 1", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+Sequence -> "Action 1";
+"Action 2" [label="Action 2", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+Sequence -> "Action 2";
+"Action 3" [label="Action 3", shape=ellipse, style=filled, fillcolor=gray, fontsize=9, fontcolor=black];
+Sequence -> "Action 3";
+}

@@ -1,0 +1,5 @@
+numpy==2.2.5
+py-trees==2.3.0
+azure-digitaltwins-core==1.2.0
+azure-identity==1.21.0
+azure-mgmt-resource==23.3.0

@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /local.iothub.cli/env
 /local.simulation.cli/env
+/py-trees.cli/env
