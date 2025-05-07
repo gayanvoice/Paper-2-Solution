@@ -85,9 +85,10 @@ namespace FunctionApp
                                     await UpdateInfraredSensor2Twin(bodyJObject);
                                     await UpdateInfraredSensor3Twin(bodyJObject);
                                     await UpdateInfraredSensor4Twin(bodyJObject);
-                                    _logger.LogInformation("[{rootId}] updated ur_cobot digital twin successfully", rootId);
                                     DateTime endDateTime = DateTime.Now;
                                     _stopwatch.Stop();
+                                    _logger.LogInformation("[{rootId}] updated ur_cobot digital twin successfully", rootId);
+
                                 }
                                 else if (iotHubConnectionDeviceId.Equals("robotiq_gripper"))
                                 {
@@ -159,15 +160,15 @@ namespace FunctionApp
             azureJsonPatchDocument.AppendAdd("/var_standard_digital_out_5", Convert.ToBoolean(bodyJObject["standard_digital_out_5"]));
             azureJsonPatchDocument.AppendAdd("/var_standard_digital_out_6", Convert.ToBoolean(bodyJObject["standard_digital_out_6"]));
             azureJsonPatchDocument.AppendAdd("/var_standard_digital_out_7", Convert.ToBoolean(bodyJObject["standard_digital_out_7"]));
-            azureJsonPatchDocument.AppendAdd("/control_move_j", MoveJControlModel.GetMoveJControlModel(jToken: bodyJObject["target_q"]));
-            azureJsonPatchDocument.AppendAdd("/control_open_popup", OpenPopupControlModel.GetOpenPopupControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_close_popup", ClosePopupControlModel.GetClosePopupControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_close_safety_popup", CloseSafetyPopupControlModel.GetCloseSafetyPopupControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_power_off", PowerOffControlModel.GetPowerOffControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_power_on", PowerOnControlModel.GetPowerOnControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_start_free_drive", StartFreeDriveControlModel.GetStartFreeDriveControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_stop_free_drive", StopFreeDriveControlModel.GetStopFreeDriveControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_unlock_protective_stop", UnlockProtectiveStopControlModel.GetUnlockProtectiveStopControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_move_j", MoveJControlModel.GetMoveJControlModel(jToken: bodyJObject["target_q"]));
+            //azureJsonPatchDocument.AppendAdd("/control_open_popup", OpenPopupControlModel.GetOpenPopupControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_close_popup", ClosePopupControlModel.GetClosePopupControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_close_safety_popup", CloseSafetyPopupControlModel.GetCloseSafetyPopupControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_power_off", PowerOffControlModel.GetPowerOffControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_power_on", PowerOnControlModel.GetPowerOnControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_start_free_drive", StartFreeDriveControlModel.GetStartFreeDriveControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_stop_free_drive", StopFreeDriveControlModel.GetStopFreeDriveControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_unlock_protective_stop", UnlockProtectiveStopControlModel.GetUnlockProtectiveStopControlModel());
             await _digitalTwinsClient.UpdateDigitalTwinAsync("ur_cobot", azureJsonPatchDocument);
         }
         private async Task UpdateTemperatureSensor1Twin(JObject bodyJObject)
@@ -212,9 +213,9 @@ namespace FunctionApp
             azureJsonPatchDocument.AppendAdd("/var_pre", Convert.ToInt32(bodyJObject["pre"]));
             azureJsonPatchDocument.AppendAdd("/var_spe", Convert.ToInt32(bodyJObject["spe"]));
             azureJsonPatchDocument.AppendAdd("/var_sta", Convert.ToInt32(bodyJObject["sta"]));
-            azureJsonPatchDocument.AppendAdd("/control_activate_gripper", ActivateGripperControlModel.GetActivateGripperControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_open_gripper", OpenGripperControlModel.GetOpenGripperControlModel());
-            azureJsonPatchDocument.AppendAdd("/control_close_gripper", CloseGripperControlModel.GetCloseGripperControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_activate_gripper", ActivateGripperControlModel.GetActivateGripperControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_open_gripper", OpenGripperControlModel.GetOpenGripperControlModel());
+            //azureJsonPatchDocument.AppendAdd("/control_close_gripper", CloseGripperControlModel.GetCloseGripperControlModel());
             await _digitalTwinsClient.UpdateDigitalTwinAsync("robotiq_gripper", azureJsonPatchDocument);
         }
     }
