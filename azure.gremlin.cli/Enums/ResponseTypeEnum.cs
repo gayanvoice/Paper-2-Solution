@@ -2,6 +2,7 @@
 {
     public enum ResponseTypeEnum
     {
+        NO_RESPONSE,
         FAILED,
         SUCCESS,
         THROTTLED,

@@ -1,6 +1,6 @@
 ﻿namespace azure.gremlin.cli.Models.RequestScript
 {
-    public class DropRequestScriptModel : IRequestScript
+    public class DropRequestScript : IRequestScript
     {
         public string GetRequestScript()
         {

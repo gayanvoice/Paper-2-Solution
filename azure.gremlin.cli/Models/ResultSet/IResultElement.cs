@@ -1,4 +1,4 @@
-﻿namespace azure.gremlin.cli.Models
+﻿namespace azure.gremlin.cli.Models.ResultSet
 {
     public interface IResultElement
     {

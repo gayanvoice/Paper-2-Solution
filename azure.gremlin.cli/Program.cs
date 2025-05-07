@@ -1,5 +1,5 @@
-﻿using azure.gremlin.cli.Models;
-using azure.gremlin.cli.Models.RequestScript;
+﻿using azure.gremlin.cli.Models.RequestScript;
+using azure.gremlin.cli.Models.ResultSet;
 using azure.gremlin.cli.Readers;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -57,68 +57,74 @@ GremlinClient gremlinClient = new GremlinClient(gremlinServer: gremlinServer, me
 Console.WriteLine($"gremlin client has {gremlinClient.NrConnections} connections");
 
 List<IRequestScript> requestScriptList = new List<IRequestScript>();
-requestScriptList.Add(new DropRequestScriptModel());
-requestScriptList.Add(new ProcessVertexRequestScriptModel(id: "factory", name: "Factory", description: "has assets, processes, and items"));
-requestScriptList.Add(new ProcessVertexRequestScriptModel(id: "items", name: "Items", description: "has items"));
-requestScriptList.Add(new ProcessVertexRequestScriptModel(id: "loadingbay", name: "Loading Bay", description: "a secure environment housing assets"));
-requestScriptList.Add(new ProcessVertexRequestScriptModel(id: "positions", name: "Positions", description: "has loading and unloading positions"));
-requestScriptList.Add(new ProcessVertexRequestScriptModel(id: "loading_positions", name: "Loading Positions", description: "has loading positions"));
-requestScriptList.Add(new ProcessVertexRequestScriptModel(id: "unloading_positions", name: "Unloading Positions", description: "has unloading positions"));
 
-requestScriptList.Add(new PositionVertexRequestScriptModel(id: "loading_position_1", name: "Loading Position 1", hasObject: false, description: "designated for placing payload items to be processed"));
-requestScriptList.Add(new PositionVertexRequestScriptModel(id: "loading_position_2", name: "Loading Position 2", hasObject: false, description: "designated for placing payload items to be processed"));
-requestScriptList.Add(new PositionVertexRequestScriptModel(id: "unloading_position_1", name: "Unloading Position 1", hasObject: false, description: "designated for placing processed or unprocessed payload items"));
-requestScriptList.Add(new PositionVertexRequestScriptModel(id: "unloading_position_2", name: "Unloading Position 2", hasObject: false, description: "designated for placing processed or unprocessed payload items"));
+//requestScriptList.Add(new DropRequestScript());
 
-requestScriptList.Add(new ItemVertexRequestScriptModel(id: "item_1", name: "Item 1", hasProcessed: false, description: "ready for processing"));
-requestScriptList.Add(new ItemVertexRequestScriptModel(id: "item_2", name: "Item 2", hasProcessed: true, description: "already processed"));
+//requestScriptList.Add(new AddVertexRequestScript.ProcessLabel.ProcessVertexModel(id: "factory", name: "Factory", description: "has assets, processes, and items"));
+//requestScriptList.Add(new AddVertexRequestScript.ProcessLabel.ProcessVertexModel(id: "items", name: "Items", description: "has items"));
+//requestScriptList.Add(new AddVertexRequestScript.ProcessLabel.ProcessVertexModel(id: "loadingbay", name: "Loading Bay", description: "a secure environment housing assets"));
+//requestScriptList.Add(new AddVertexRequestScript.ProcessLabel.ProcessVertexModel(id: "positions", name: "Positions", description: "has loading and unloading positions"));
+//requestScriptList.Add(new AddVertexRequestScript.ProcessLabel.ProcessVertexModel(id: "loading_positions", name: "Loading Positions", description: "has loading positions"));
+//requestScriptList.Add(new AddVertexRequestScript.ProcessLabel.ProcessVertexModel(id: "unloading_positions", name: "Unloading Positions", description: "has unloading positions"));
 
-requestScriptList.Add(new AssetRGVertexRequestScriptModel(id: "robotiq_gripper", name: "Robotiq Gripper", status: "disabled", position: "closed", description: "a robotic gripper mounted on the arm of UR Cobot to grasp and manipulate payload items"));
+//requestScriptList.Add(new AddVertexRequestScript.PositionLabel.PositionVertexModel(id: "loading_position_1", name: "Loading Position 1", hasObject: false, description: "designated for placing payload items to be processed"));
+//requestScriptList.Add(new AddVertexRequestScript.PositionLabel.PositionVertexModel(id: "loading_position_2", name: "Loading Position 2", hasObject: false, description: "designated for placing payload items to be processed"));
+//requestScriptList.Add(new AddVertexRequestScript.PositionLabel.PositionVertexModel(id: "unloading_position_1", name: "Unloading Position 1", hasObject: false, description: "designated for placing processed or unprocessed payload items"));
+//requestScriptList.Add(new AddVertexRequestScript.PositionLabel.PositionVertexModel(id: "unloading_position_2", name: "Unloading Position 2", hasObject: false, description: "designated for placing processed or unprocessed payload items"));
 
-requestScriptList.Add(new AssetUCVertexRequestScriptModel(id: "ur_cobot", name: "UR Cobot", status: "disabled", position: "home", description: "a collaborative robot used for performing pick-and-place tasks"));
+//requestScriptList.Add(new AddVertexRequestScript.ItemLabel.ItemVertexModel(id: "item_1", name: "Item 1", hasProcessed: false, description: "ready for processing"));
+//requestScriptList.Add(new AddVertexRequestScript.ItemLabel.ItemVertexModel(id: "item_2", name: "Item 2", hasProcessed: true, description: "already processed"));
 
-requestScriptList.Add(new AssetCBVertexRequestScriptModel(id: "control_board", name: "Control Board", description: "mounted on the UR Cobot to manage input/output I/O) operations of sensors"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.RobotiqGripperVertexModel(id: "robotiq_gripper", name: "Robotiq Gripper", status: "disabled", position: "closed", description: "a robotic gripper mounted on the arm of UR Cobot to grasp and manipulate payload items"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.URCobotVertexModel(id: "ur_cobot", name: "UR Cobot", status: "disabled", position: "home", description: "a collaborative robot used for performing pick-and-place tasks"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.ControlBoardVertexModel(id: "control_board", name: "Control Board", description: "mounted on the UR Cobot to manage input/output I/O) operations of sensors"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.TemperatureSensorVertexModel(id: "temperature_sensor_1", name: "Temperature Sensor 1", temperature: 16.666, description: "records ambient temperature in the environment"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.IlluminanceSensorVertexModel(id: "illuminance_sensor_1", name: "Illuminance Sensor 1", illuminance: 20, description: "records ambient illumination in the environment"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.InfraredSensorVertexModel(id: "infrared_sensor_1", name: "Infrared Sensor 1", detectObject: false, description: "mounted on unloading position 1"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.InfraredSensorVertexModel(id: "infrared_sensor_2", name: "Infrared Sensor 2", detectObject: false, description: "mounted on unloading position 2"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.InfraredSensorVertexModel(id: "infrared_sensor_3", name: "Infrared Sensor 3", detectObject: false, description: "mounted on loading position 1"));
+//requestScriptList.Add(new AddVertexRequestScript.AssetLabel.InfraredSensorVertexModel(id: "infrared_sensor_4", name: "Infrared Sensor 4", detectObject: true, description: "mounted on loading position 2"));
 
-requestScriptList.Add(new AssetTSVertexRequestScriptModel(id: "temperature_sensor_1", name: "Temperature Sensor 1", temperature: 16.666, description: "records ambient temperature in the environment"));
+//// edge creation : known vertext > id > unknown
 
-requestScriptList.Add(new AssetISVertexRequestScriptModel(id: "illuminance_sensor_1", name: "Illuminance Sensor 1", illuminance: 20, description: "records ambient illumination in the environment"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "positions", edgeId: "part_of", targetId: "factory"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "items", edgeId: "part_of", targetId: "factory"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "loadingbay", edgeId: "part_of", targetId: "factory"));
 
-requestScriptList.Add(new AssetIRVertexRequestScriptModel(id: "infrared_sensor_1", name: "Infrared Sensor 1", detectObject: false, description: "mounted on unloading position 1"));
-requestScriptList.Add(new AssetIRVertexRequestScriptModel(id: "infrared_sensor_2", name: "Infrared Sensor 2", detectObject: false, description: "mounted on unloading position 2"));
-requestScriptList.Add(new AssetIRVertexRequestScriptModel(id: "infrared_sensor_3", name: "Infrared Sensor 3", detectObject: false, description: "mounted on loading position 1"));
-requestScriptList.Add(new AssetIRVertexRequestScriptModel(id: "infrared_sensor_4", name: "Infrared Sensor 4", detectObject: true, description: "mounted on loading position 2"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "loading_positions", edgeId: "are_in", targetId: "positions"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "unloading_positions", edgeId: "are_in", targetId: "positions"));
 
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "positions", edgeId: "part_of", targetId: "factory"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "items", edgeId: "part_of", targetId: "factory"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "loadingbay", edgeId: "part_of", targetId: "factory"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "loading_position_1", edgeId: "is_in", targetId: "loading_positions"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "loading_position_2", edgeId: "is_in", targetId: "loading_positions"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "unloading_position_1", edgeId: "is_in", targetId: "unloading_positions"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "unloading_position_2", edgeId: "is_in", targetId: "unloading_positions"));
 
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "loading_positions", edgeId: "are_in", targetId: "positions"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "unloading_positions", edgeId: "are_in", targetId: "positions"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "item_1", edgeId: "associated_with", targetId: "items"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "item_2", edgeId: "associated_with", targetId: "items"));
 
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "loading_position_1", edgeId: "is_in", targetId: "loading_positions"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "loading_position_2", edgeId: "is_in", targetId: "loading_positions"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "unloading_position_1", edgeId: "is_in", targetId: "unloading_positions"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "unloading_position_2", edgeId: "is_in", targetId: "unloading_positions"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "robotiq_gripper", edgeId: "integrated_with", targetId: "loadingbay"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "ur_cobot", edgeId: "integrated_with", targetId: "loadingbay"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "control_board", edgeId: "integrated_with", targetId: "ur_cobot"));
 
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "item_1", edgeId: "associated_with", targetId: "items"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "item_2", edgeId: "associated_with", targetId: "items"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "temperature_sensor_1", edgeId: "connected_to", targetId: "control_board"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "illuminance_sensor_1", edgeId: "connected_to", targetId: "control_board"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "infrared_sensor_1", edgeId: "connected_to", targetId: "control_board"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "infrared_sensor_2", edgeId: "connected_to", targetId: "control_board"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "infrared_sensor_3", edgeId: "connected_to", targetId: "control_board"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "infrared_sensor_4", edgeId: "connected_to", targetId: "control_board"));
 
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "robotiq_gripper", edgeId: "integrated_with", targetId: "loadingbay"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "ur_cobot", edgeId: "integrated_with", targetId: "loadingbay"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "control_board", edgeId: "integrated_with", targetId: "ur_cobot"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "item_1", edgeId: "placed_at", targetId: "loading_position_1"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "item_1", edgeId: "handled_by", targetId: "robotiq_gripper"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "item_1", edgeId: "handled_by", targetId: "ur_cobot"));
 
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "temperature_sensor_1", edgeId: "connected_to", targetId: "control_board"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "illuminance_sensor_1", edgeId: "connected_to", targetId: "control_board"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "infrared_sensor_1", edgeId: "connected_to", targetId: "control_board"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "infrared_sensor_2", edgeId: "connected_to", targetId: "control_board"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "infrared_sensor_3", edgeId: "connected_to", targetId: "control_board"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "infrared_sensor_4", edgeId: "connected_to", targetId: "control_board"));
+//requestScriptList.Add(new AddEdgeRequestScript(sourceId: "item_2", edgeId: "placed_at", targetId: "unloading_position_1"));
 
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "item_1", edgeId: "placed_at", targetId: "loading_position_1"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "item_1", edgeId: "handled_by", targetId: "robotiq_gripper"));
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "item_1", edgeId: "handled_by", targetId: "ur_cobot"));
-
-requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "item_2", edgeId: "placed_at", targetId: "unloading_position_1"));
+//requestScriptList.Add(new SortRequestScript(requestScript: string.Format("g.V().hasLabel('{0}').order().by('{1}', decr).values('name')", VertexLabelEnum.Asset.ToString(), "id")));
+//requestScriptList.Add(new SortRequestScript(requestScript: string.Format("g.V().hasLabel('{0}').order().by('{1}', decr)", VertexLabelEnum.Asset.ToString(), "id")));
+//requestScriptList.Add(new SortRequestScript(requestScript: string.Format("g.E()")));
+requestScriptList.Add(new SortRequestScript(requestScript: string.Format("g.V().count()")));
+requestScriptList.Add(new SortRequestScript(requestScript: string.Format("g.V().label()")));
+//requestScriptList.Add(new SortRequestScript(requestScript: string.Format("g.E()")));
 
 
 
@@ -139,7 +145,7 @@ requestScriptList.Add(new EdgeRequestScriptModel(sourceId: "item_2", edgeId: "pl
 
 //    { "AddVertex 11", "g.addV('item').property('id', 'item_1').property('name', 'Item 1').property('has_processed', 'False').property('description', 'ready for processing').property('partitionKey', 'factory')" },
 //    { "AddVertex 12", "g.addV('item').property('id', 'item_2').property('name', 'Item 1').property('has_processed', 'True').property('description', 'already processed').property('partitionKey', 'factory')" },
-    
+
 //    { "AddVertex 13", "g.addV('asset_rg').property('id', 'robotiq_gripper').property('name', 'Robotiq Gripper').property('status', 'disabled').property('position', 'closed').property('description', 'a robotic gripper mounted on the arm of UR Cobot to grasp and manipulate payload items').property('partitionKey', 'factory')" },
 
 //    { "AddVertex 14", "g.addV('asset_uc').property('id', 'ur_cobot').property('name', 'UR Cobot').property('status', 'disabled').property('position', 'home').property('description', 'a collaborative robot used for performing pick-and-place tasks').property('joint_position', 'Home').property('partitionKey', 'factory')" },
@@ -201,15 +207,16 @@ GremlinGraph gremlinGraph = new GremlinGraph(gremlinClient);
 foreach (IRequestScript requestScript in requestScriptList)
 {
     ResultSetModel resultSetModel = await gremlinGraph.SubmitAsync(requestScript);
-    //if (resultSetModel.ResultType == azure.gremlin.cli.Enums.ResultTypeEnum.NO_RESULT)
+    Console.WriteLine(resultSetModel.GetLlmInput());
+    //if (resultSetModel.ResultType == azure.gremlin.cli.Enums.ResultTypeEnum.NO_RESULT.ToString())
     //{
     //    Console.WriteLine("NO_RESULT");
     //}
-    //if (resultSetModel.ResultType == azure.gremlin.cli.Enums.ResultTypeEnum.VERTEX)
+    //if (resultSetModel.ResultType == azure.gremlin.cli.Enums.ResultTypeEnum.VERTEX.ToString())
     //{
     //    Console.WriteLine("VERTEX: " + resultSetModel.GetLlmInput());
     //}
-    //if (resultSetModel.ResultType == azure.gremlin.cli.Enums.ResultTypeEnum.EDGE)
+    //if (resultSetModel.ResultType == azure.gremlin.cli.Enums.ResultTypeEnum.EDGE.ToString())
     //{
     //    Console.WriteLine("EDGE: " + resultSetModel.GetLlmInput());
     //}
@@ -228,10 +235,7 @@ public class GremlinGraph
         try
         {
             ResultSet<dynamic> resultSet = await _gremlinClient.SubmitAsync<dynamic>(requestScript.GetRequestScript());
-            ResultSetModel resultSetModel = new ResultSetModel();
-            resultSetModel.SetRequest(requestScript);
-            resultSetModel.SetResponse(resultSet);
-            Console.WriteLine(JsonConvert.SerializeObject(resultSetModel, Formatting.Indented));
+            ResultSetModel resultSetModel = new ResultSetModel(requestScript, resultSet);
             return resultSetModel;
         }
         catch (ResponseException e)
@@ -240,5 +244,5 @@ public class GremlinGraph
             throw;
         }
     }
-   
+
 }

@@ -2,9 +2,9 @@
 using Gremlin.Net.Driver;
 using Newtonsoft.Json;
 
-namespace azure.gremlin.cli.Models
+namespace azure.gremlin.cli.Models.ResultSet
 {
-    public class CosmosDbResponseMetadataModel
+    public class ResponseMetadataModel
     {
         [JsonProperty("x-ms-status-code")]
         public int StatusCode { get; set; }
@@ -23,7 +23,7 @@ namespace azure.gremlin.cli.Models
 
         [JsonProperty("x-ms-total-server-time-ms")]
         public double TotalServerTimeMs { get; set; }
-        public static CosmosDbResponseMetadataModel Create(ResultSet<dynamic> resultSet)
+        public static ResponseMetadataModel Create(ResultSet<dynamic> resultSet)
         {
             object? statusCode = ParseHelper.GetValueOrDefault(resultSet.StatusAttributes, "x-ms-status-code");
             object? activityId = ParseHelper.GetValueOrDefault(resultSet.StatusAttributes, "x-ms-activity-id");
@@ -32,7 +32,8 @@ namespace azure.gremlin.cli.Models
             object? serverTimeMs = ParseHelper.GetValueOrDefault(resultSet.StatusAttributes, "x-ms-server-time-ms");
             object? totalServerTimeMs = ParseHelper.GetValueOrDefault(resultSet.StatusAttributes, "x-ms-total-server-time-ms");
 
-            CosmosDbResponseMetadataModel cosmosDbResponseMetadataModel = new CosmosDbResponseMetadataModel();
+            ResponseMetadataModel cosmosDbResponseMetadataModel = new ResponseMetadataModel();
+
             if (statusCode is not null) cosmosDbResponseMetadataModel.StatusCode = (int)statusCode;
             else cosmosDbResponseMetadataModel.StatusCode = 0;
 

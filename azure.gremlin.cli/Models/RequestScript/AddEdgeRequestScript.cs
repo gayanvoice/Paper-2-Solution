@@ -1,11 +1,11 @@
 ﻿namespace azure.gremlin.cli.Models.RequestScript
 {
-    public class EdgeRequestScriptModel : IRequestScript
+    public class AddEdgeRequestScript : IRequestScript
     {
         public string? EdgeId { get; set; }
         public string? SourceId { get; set; }
         public string? TargetId { get; set; }
-        public EdgeRequestScriptModel(string sourceId, string edgeId, string targetId)
+        public AddEdgeRequestScript(string sourceId, string edgeId, string targetId)
         {
             SourceId = sourceId;
             EdgeId = edgeId;

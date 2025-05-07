@@ -2,10 +2,13 @@
 {
     public enum ResultTypeEnum
     {
-        EDGE,
-        VERTEX,
-        OTHER,
-        MIXED,
+        STRING_RESULT,
+        INTEGER_RESULT,
+        LONG_RESULT,
+        VERTEX_OBJECT,
+        EDGE_OBJECT,
+        ARRAY_RESULT,
+        UNKNOWN_RESULT,
         NO_RESULT
     }
 }
