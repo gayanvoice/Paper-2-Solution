@@ -1,5 +1,9 @@
 import time
 import json
+
+import multiprocessing
+import multiprocessing.connection
+
 from typing import Optional, Dict, Any
 from azure.digitaltwins.core import DigitalTwinsClient
 
@@ -19,10 +23,21 @@ class RobotiqGripperTwinController:
             print(f"get digital twin error: {e}")
             return None
 
-    def activate(self) -> ResponseModel:
+    def activate(self, pipe_connection: multiprocessing.connection.Connection) -> None:
         start_time = time.time()
+        response_model = {}
+        pipe_connection.recv()
+        percentage_complete = 0
+
         try:
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
             twin_state_before_update = self.get_digital_twin()
+
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
             json_patch = [
                 {
                     "op": "replace",
@@ -34,21 +49,31 @@ class RobotiqGripperTwinController:
                     "path": "/control_activate_gripper/ResponsePayload"
                 }
             ]
+            
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
 
             self.digital_twins_client.update_digital_twin(self.digital_twin_id, json_patch)
             
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
             i = 1
             while True:
                 twin_state_after_update = self.get_digital_twin()
                 if twin_state_after_update.control_activate_gripper.RequestPayload.IsCommandRequested:
-                    print(f"waiting for {i} second(s)")
+                    percentage_complete += 1
+                    pipe_connection.send([percentage_complete, response_model])
                     time.sleep(1)
                     i += 1
                 else:
                     break;
+            
+            percentage_complete += 90 - percentage_complete
+            pipe_connection.send([percentage_complete, response_model])
 
             twin_state_after_update = self.get_digital_twin()
-
+            
             end_time = time.time()
             elapsed_ms = (end_time - start_time) * 1000
 
@@ -57,7 +82,10 @@ class RobotiqGripperTwinController:
             response_model.Message = twin_state_after_update.control_activate_gripper.ResponsePayload.Message
             response_model.IotElapsedTime = twin_state_after_update.control_activate_gripper.ResponsePayload.ElapsedTime
             response_model.DtElapsedTime = elapsed_ms
-            return response_model
+
+            percentage_complete = 100
+            pipe_connection.send([percentage_complete, response_model])
+
         except Exception as e:
             end_time = time.time()
             elapsed_ms = (end_time - start_time) * 1000
@@ -67,11 +95,26 @@ class RobotiqGripperTwinController:
             response_model.Message = str(e)
             response_model.IotElapsedTime = 0.0
             response_model.DtElapsedTime = elapsed_ms
-            return response_model
+            
+            percentage_complete = 100
+            pipe_connection.send([percentage_complete, response_model])
 
-    def open_gripper(self) -> ResponseModel:
+
+    def open(self, pipe_connection: multiprocessing.connection.Connection) -> None:
         start_time = time.time()
+        response_model = {}
+        pipe_connection.recv()
+        percentage_complete = 0
+
         try:
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
+            twin_state_before_update = self.get_digital_twin()
+
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
             json_patch = [
                 {
                     "op": "replace",
@@ -83,20 +126,31 @@ class RobotiqGripperTwinController:
                     "path": "/control_open_gripper/ResponsePayload"
                 }
             ]
+            
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
             self.digital_twins_client.update_digital_twin(self.digital_twin_id, json_patch)
+            
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
 
             i = 1
             while True:
                 twin_state_after_update = self.get_digital_twin()
                 if twin_state_after_update.control_open_gripper.RequestPayload.IsCommandRequested:
-                    print(f"waiting for {i} second(s)")
+                    percentage_complete += 1
+                    pipe_connection.send([percentage_complete, response_model])
                     time.sleep(1)
                     i += 1
                 else:
                     break;
+            
+            percentage_complete += 90 - percentage_complete
+            pipe_connection.send([percentage_complete, response_model])
 
             twin_state_after_update = self.get_digital_twin()
-
+            
             end_time = time.time()
             elapsed_ms = (end_time - start_time) * 1000
 
@@ -105,7 +159,10 @@ class RobotiqGripperTwinController:
             response_model.Message = twin_state_after_update.control_open_gripper.ResponsePayload.Message
             response_model.IotElapsedTime = twin_state_after_update.control_open_gripper.ResponsePayload.ElapsedTime
             response_model.DtElapsedTime = elapsed_ms
-            return response_model
+
+            percentage_complete = 100
+            pipe_connection.send([percentage_complete, response_model])
+
         except Exception as e:
             end_time = time.time()
             elapsed_ms = (end_time - start_time) * 1000
@@ -115,11 +172,26 @@ class RobotiqGripperTwinController:
             response_model.Message = str(e)
             response_model.IotElapsedTime = 0.0
             response_model.DtElapsedTime = elapsed_ms
-            return response_model
+            
+            percentage_complete = 100
+            pipe_connection.send([percentage_complete, response_model])
 
-    def close_gripper(self) -> ResponseModel:
+
+    def close(self, pipe_connection: multiprocessing.connection.Connection) -> None:
         start_time = time.time()
+        response_model = {}
+        pipe_connection.recv()
+        percentage_complete = 0
+
         try:
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
+            twin_state_before_update = self.get_digital_twin()
+
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
             json_patch = [
                 {
                     "op": "replace",
@@ -131,20 +203,31 @@ class RobotiqGripperTwinController:
                     "path": "/control_close_gripper/ResponsePayload"
                 }
             ]
+            
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
             self.digital_twins_client.update_digital_twin(self.digital_twin_id, json_patch)
             
+            percentage_complete += 10
+            pipe_connection.send([percentage_complete, response_model])
+
             i = 1
             while True:
                 twin_state_after_update = self.get_digital_twin()
                 if twin_state_after_update.control_close_gripper.RequestPayload.IsCommandRequested:
-                    print(f"waiting for {i} second(s)")
+                    percentage_complete += 1
+                    pipe_connection.send([percentage_complete, response_model])
                     time.sleep(1)
                     i += 1
                 else:
                     break;
+            
+            percentage_complete += 90 - percentage_complete
+            pipe_connection.send([percentage_complete, response_model])
 
             twin_state_after_update = self.get_digital_twin()
-
+            
             end_time = time.time()
             elapsed_ms = (end_time - start_time) * 1000
 
@@ -153,7 +236,10 @@ class RobotiqGripperTwinController:
             response_model.Message = twin_state_after_update.control_close_gripper.ResponsePayload.Message
             response_model.IotElapsedTime = twin_state_after_update.control_close_gripper.ResponsePayload.ElapsedTime
             response_model.DtElapsedTime = elapsed_ms
-            return response_model
+
+            percentage_complete = 100
+            pipe_connection.send([percentage_complete, response_model])
+
         except Exception as e:
             end_time = time.time()
             elapsed_ms = (end_time - start_time) * 1000
@@ -163,4 +249,7 @@ class RobotiqGripperTwinController:
             response_model.Message = str(e)
             response_model.IotElapsedTime = 0.0
             response_model.DtElapsedTime = elapsed_ms
-            return response_model
+            
+            percentage_complete = 100
+            pipe_connection.send([percentage_complete, response_model])
+    

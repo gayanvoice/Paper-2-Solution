@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ActionBehaviour.py" />
+    <Compile Include="behaviours\actions\robotiq_gripper\close_action.py" />
+    <Compile Include="behaviours\actions\robotiq_gripper\open_action.py" />
+    <Compile Include="behaviours\actions\robotiq_gripper\activate_action.py" />
     <Compile Include="controller\ur_cobot_twin_controller.py" />
     <Compile Include="controller\robotiq_gripper_twin_controller.py" />
     <Compile Include="enums\status_enum.py" />
@@ -52,10 +55,14 @@
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="behaviours\actions\robotiq_gripper\" />
+    <Folder Include="behaviours\checks\" />
+    <Folder Include="behaviours\actions\" />
     <Folder Include="model\" />
     <Folder Include="controller\" />
     <Folder Include="enums\" />
     <Folder Include="model\behaviour_trees\" />
+    <Folder Include="behaviours\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

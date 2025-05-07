@@ -8,6 +8,10 @@ from azure.identity import InteractiveBrowserCredential
 from azure.digitaltwins.core import DigitalTwinsClient
 
 from ActionBehaviour import ActionBehaviour
+from behaviours.actions.robotiq_gripper.activate_action import ActivateAction
+from behaviours.actions.robotiq_gripper.open_action import OpenAction
+from behaviours.actions.robotiq_gripper.close_action import CloseAction
+
 from model.robotiq_gripper_twin_model import RobotiqGripperTwinModel
 from model.ur_cobot_twin_model import URCobotTwinModel
 
@@ -22,68 +26,81 @@ def main() -> None:
 
     interactive_browser_credential = InteractiveBrowserCredential(tenant_id=tenent_id)
     digital_twins_client = DigitalTwinsClient(digital_twins_url, interactive_browser_credential)
- 
-    robotiq_gripper_twin_controller = RobotiqGripperTwinController(digital_twins_client, robotiq_gripper_twin_id)
 
+    robotiq_gripper_twin_controller = RobotiqGripperTwinController(digital_twins_client, robotiq_gripper_twin_id)
     ur_cobot_twin_controller = URCobotTwinController(digital_twins_client, ur_cobot_twin_id)
     
     robotiq_gripper_twin_model = robotiq_gripper_twin_controller.get_digital_twin()
 
-    # activate_gripper_response = robotiq_gripper_twin_controller.activate()
-    # print(activate_gripper_response)
+    py_trees.logging.level = py_trees.logging.Level.DEBUG
 
-    # open_gripper_response = robotiq_gripper_twin_controller.open_gripper()
-    # print(open_gripper_response)
+    activate_action = ActivateAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
+    open_action = OpenAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
+    close_action = CloseAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
 
-    # close_gripper_response = robotiq_gripper_twin_controller.close_gripper()
-    # print(close_gripper_response)
+    # close_action.setup()
 
-    move_response = ur_cobot_twin_controller.move(-127, -100, -130, -40, 96, -7)
-    print(move_response)
+    root = py_trees.composites.Sequence(name="Sequence", memory=True)
+    root.add_child(activate_action)
+    root.add_child(open_action)
+    root.add_child(close_action)
+    root.setup_with_descendants()
 
-    time.sleep(2)
-
-    move_response = ur_cobot_twin_controller.move(127, 100, 130, 40, -96, 7)
-    print(move_response)
-
-    time.sleep(2)
-
-    open_popup_response = ur_cobot_twin_controller.open_popup("some text")
-    print(open_popup_response)
-
-    time.sleep(2)
-
-    close_popup_response = ur_cobot_twin_controller.close_popup()
-    print(close_popup_response)
+    for _unused_i in range(0, 100):
+        root.tick_once()
+        time.sleep(1)
+    print("\n")
 
 
-    time.sleep(2)
 
-    start_free_drive_response = ur_cobot_twin_controller.start_free_drive()
-    print(start_free_drive_response)
+    # move_response = ur_cobot_twin_controller.move(-127, -100, -130, -40, 96, -7)
+    # print(move_response)
 
-    time.sleep(2)
+    # time.sleep(2)
 
-    stop_free_drive_response = ur_cobot_twin_controller.stop_free_drive()
-    print(stop_free_drive_response)
+    # move_response = ur_cobot_twin_controller.move(127, 100, 130, 40, -96, 7)
+    # print(move_response)
 
-    time.sleep(2)
+    # time.sleep(2)
 
-    power_off_response = ur_cobot_twin_controller.power_off()
-    print(power_off_response)
+    # open_popup_response = ur_cobot_twin_controller.open_popup("some text")
+    # print(open_popup_response)
 
-    time.sleep(2)
+    # time.sleep(2)
 
-    power_on_response = ur_cobot_twin_controller.power_on()
-    print(power_on_response)
+    # close_popup_response = ur_cobot_twin_controller.close_popup()
+    # print(close_popup_response)
 
-    # ur_cobot_twin_controller = URCobotTwinController(digital_twins_client, ur_cobot_twin_id)
-    # ur_cobot_twin_model = ur_cobot_twin_controller.get_digital_twin()
-    # print(ur_cobot_twin_model.to_json())
+
+    # time.sleep(2)
+
+    # start_free_drive_response = ur_cobot_twin_controller.start_free_drive()
+    # print(start_free_drive_response)
+
+    # time.sleep(2)
+
+    # stop_free_drive_response = ur_cobot_twin_controller.stop_free_drive()
+    # print(stop_free_drive_response)
+
+    # time.sleep(2)
+
+    # power_off_response = ur_cobot_twin_controller.power_off()
+    # print(power_off_response)
+
+    # time.sleep(2)
+
+    # power_on_response = ur_cobot_twin_controller.power_on()
+    # print(power_on_response)
+
 
     # py_trees.logging.level = py_trees.logging.Level.DEBUG
 
     # root = py_trees.composites.Sequence(name="Sequence", memory=True)
+
+
+
+
+
     # for action in ["Action 1", "Action 2", "Action 3"]:
     #     rssss = py_trees.behaviours.StatusQueue(
     #         name=action,
@@ -95,8 +112,8 @@ def main() -> None:
     #     )
     #     root.add_child(rssss)
 
-    # # py_trees.display.render_dot_tree(root)
-    # # sys.exit()
+    # py_trees.display.render_dot_tree(root)
+    # sys.exit()
 
     # root.setup_with_descendants()
 
