@@ -7,7 +7,7 @@ import typing
 import py_trees
 
 class OpenAction(py_trees.behaviour.Behaviour):
-    def __init__(self, robotiq_gripper_twin_controller, name: str = "open action"):
+    def __init__(self, robotiq_gripper_twin_controller, name: str = "Open Action"):
         super(OpenAction, self).__init__(name)
         self.robotiq_gripper_twin_controller = robotiq_gripper_twin_controller
         self.logger.debug("%s.__init__()" % (self.__class__.__name__))

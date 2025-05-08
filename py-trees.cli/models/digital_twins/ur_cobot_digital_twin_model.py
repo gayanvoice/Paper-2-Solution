@@ -3,7 +3,7 @@ from typing import Optional, Dict, Any
 import json
 
 @dataclass
-class URCobotTwinModel:
+class URCobotDigitalTwinModel:
     @dataclass
     class RequestPayload:
         IsCommandRequested: Optional[bool] = None
@@ -17,8 +17,8 @@ class URCobotTwinModel:
     @dataclass
     class CommandModel:
 
-        RequestPayload: Optional['URCobotTwinModel.RequestPayload'] = None
-        ResponsePayload: Optional['URCobotTwinModel.ResponsePayload'] = None
+        RequestPayload: Optional['URCobotDigitalTwinModel.RequestPayload'] = None
+        ResponsePayload: Optional['URCobotDigitalTwinModel.ResponsePayload'] = None
 
     dtId: str
     etag: str
@@ -34,17 +34,17 @@ class URCobotTwinModel:
 
     @staticmethod
     def from_dict(data: Dict[str, Any]) -> CommandModel:
-        def parse_command(cmd_data: Dict[str, Any]) -> URCobotTwinModel.CommandModel:
+        def parse_command(cmd_data: Dict[str, Any]) -> URCobotDigitalTwinModel.CommandModel:
             request_payload = cmd_data.get('RequestPayload')
             response_payload = cmd_data.get('ResponsePayload')
-            parsed_request_payload = URCobotTwinModel.RequestPayload(**request_payload) if request_payload else None
-            parsed_response_payload = URCobotTwinModel.ResponsePayload(**response_payload) if response_payload else None
-            return URCobotTwinModel.CommandModel(
+            parsed_request_payload = URCobotDigitalTwinModel.RequestPayload(**request_payload) if request_payload else None
+            parsed_response_payload = URCobotDigitalTwinModel.ResponsePayload(**response_payload) if response_payload else None
+            return URCobotDigitalTwinModel.CommandModel(
                 RequestPayload=parsed_request_payload,
                 ResponsePayload=parsed_response_payload
             )
 
-        return URCobotTwinModel(
+        return URCobotDigitalTwinModel(
             dtId=data.get('$dtId', ''),
             etag=data.get('$etag', ''),
             control_move_j=parse_command(data.get('control_move_j', {})),

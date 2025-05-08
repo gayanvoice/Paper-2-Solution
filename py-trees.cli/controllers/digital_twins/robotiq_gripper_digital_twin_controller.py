@@ -7,29 +7,29 @@ import multiprocessing.connection
 from typing import Optional, Dict, Any
 from azure.digitaltwins.core import DigitalTwinsClient
 
-from model.behaviour_trees.response_model import ResponseModel
-from model.robotiq_gripper_twin_model import RobotiqGripperTwinModel
+from models.behaviour_trees.response_model import ResponseModel
+from models.digital_twins.robotiq_gripper_digital_twin_model import RobotiqGripperDigitalTwinModel
 
-class RobotiqGripperTwinController:
+class RobotiqGripperDigitalTwinController:
     def __init__(self, digital_twins_client: DigitalTwinsClient, digital_twin_id: str):
         self.digital_twin_id = digital_twin_id
         self.digital_twins_client = digital_twins_client
 
-    def get_digital_twin(self) -> RobotiqGripperTwinModel:
+    def get_digital_twin(self) -> RobotiqGripperDigitalTwinModel:
         try:
             twin_dictionary = self.digital_twins_client.get_digital_twin(self.digital_twin_id)
-            return RobotiqGripperTwinModel.from_dict(twin_dictionary)
+            return RobotiqGripperDigitalTwinModel.from_dict(twin_dictionary)
         except Exception as e:
             print(f"get digital twin error: {e}")
             return None
 
     def activate(self, pipe_connection: multiprocessing.connection.Connection) -> None:
-        start_time = time.time()
-        response_model = {}
         pipe_connection.recv()
         percentage_complete = 0
 
         try:
+            start_time = time.time()
+            response_model = {}
             percentage_complete += 10
             pipe_connection.send([percentage_complete, response_model])
 
@@ -101,12 +101,12 @@ class RobotiqGripperTwinController:
 
 
     def open(self, pipe_connection: multiprocessing.connection.Connection) -> None:
-        start_time = time.time()
-        response_model = {}
         pipe_connection.recv()
         percentage_complete = 0
 
         try:
+            start_time = time.time()
+            response_model = {}
             percentage_complete += 10
             pipe_connection.send([percentage_complete, response_model])
 
@@ -178,12 +178,12 @@ class RobotiqGripperTwinController:
 
 
     def close(self, pipe_connection: multiprocessing.connection.Connection) -> None:
-        start_time = time.time()
-        response_model = {}
         pipe_connection.recv()
         percentage_complete = 0
 
         try:
+            start_time = time.time()
+            response_model = {}
             percentage_complete += 10
             pipe_connection.send([percentage_complete, response_model])
 

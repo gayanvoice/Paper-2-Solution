@@ -2,21 +2,27 @@
 import sys
 import time
 import py_trees
-
+import json
 
 from azure.identity import InteractiveBrowserCredential
 from azure.digitaltwins.core import DigitalTwinsClient
 
-from ActionBehaviour import ActionBehaviour
 from behaviours.actions.robotiq_gripper.activate_action import ActivateAction
 from behaviours.actions.robotiq_gripper.open_action import OpenAction
 from behaviours.actions.robotiq_gripper.close_action import CloseAction
 
-from model.robotiq_gripper_twin_model import RobotiqGripperTwinModel
-from model.ur_cobot_twin_model import URCobotTwinModel
+from behaviours.checks.temperature_check import TemperatureCheck
 
-from controller.robotiq_gripper_twin_controller import RobotiqGripperTwinController
-from controller.ur_cobot_twin_controller import URCobotTwinController
+from controllers.behaviour_trees.dynamic_behaviour_tree_controller import DynamicBehaviourTreeController
+from helpers.llm_helper import LlmHelper
+from models.digital_twins.robotiq_gripper_digital_twin_model import RobotiqGripperDigitalTwinModel
+from models.digital_twins.ur_cobot_digital_twin_model import URCobotDigitalTwinModel
+
+from controllers.digital_twins.robotiq_gripper_digital_twin_controller import RobotiqGripperDigitalTwinController
+from controllers.digital_twins.ur_cobot_digital_twin_controller import URCobotTwinController
+
+from models.llm.conditional_llm_request_model import ConditionalLlmRequestModel
+from models.llm.sequence_llm_request_model import SequenceLlmRequestModel
 
 def main() -> None:
     tenent_id = "c263ac0d-270a-43fd-95d1-e279d1002ff9";
@@ -27,27 +33,128 @@ def main() -> None:
     interactive_browser_credential = InteractiveBrowserCredential(tenant_id=tenent_id)
     digital_twins_client = DigitalTwinsClient(digital_twins_url, interactive_browser_credential)
 
-    robotiq_gripper_twin_controller = RobotiqGripperTwinController(digital_twins_client, robotiq_gripper_twin_id)
+    robotiq_gripper_twin_controller = RobotiqGripperDigitalTwinController(digital_twins_client, robotiq_gripper_twin_id)
     ur_cobot_twin_controller = URCobotTwinController(digital_twins_client, ur_cobot_twin_id)
     
     robotiq_gripper_twin_model = robotiq_gripper_twin_controller.get_digital_twin()
 
     py_trees.logging.level = py_trees.logging.Level.DEBUG
 
-    activate_action = ActivateAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
-    open_action = OpenAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
-    close_action = CloseAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
+    # activate_action_1 = ActivateAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
+    # activate_action_2 = ActivateAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
+    # open_action = OpenAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
+    # close_action = CloseAction(robotiq_gripper_twin_controller = robotiq_gripper_twin_controller)
 
-    # close_action.setup()
+    # temperature_check = TemperatureCheck("equal_to", 20, 20)
 
-    root = py_trees.composites.Sequence(name="Sequence", memory=True)
-    root.add_child(activate_action)
-    root.add_child(open_action)
-    root.add_child(close_action)
-    root.setup_with_descendants()
+    # csv_seq_str = "activate_gripper(), open_gripper(), close_gripper()"
 
-    for _unused_i in range(0, 100):
-        root.tick_once()
+    json_str = '''
+    {
+        "if": "temperature_check(equal_to, 20, 19)",
+        "then": ["activate_gripper()", "close_gripper()"],
+        "else": ["activate_gripper()", "open_gripper()"]
+    }
+    '''
+
+    # result = LlmHelper.is_if_else_statement(json_str)
+    # print(result)
+    
+    # result = LlmHelper.is_sequence_statement(json_str)
+    # print(result)
+
+    # data = json.loads(json_str)
+
+    # conditional_request_model = ConditionalLlmRequestModel(
+    #     if_check=data["if"],
+    #     then_actions=data["then"],
+    #     else_actions=data["else"]
+    # )
+
+    # print(conditional_request_model)
+
+    # selector = py_trees.composites.Selector("If Selector", memory=True)
+
+    # if_sequence_branch = py_trees.composites.Sequence(name="Then Sequence", memory=True)
+    # if_sequence_branch.add_children([activate_action_1, close_action])
+
+    # if_sequence = py_trees.composites.Sequence("If Block", memory=True)
+    # if_sequence.add_children([temperature_check, if_sequence_branch])
+
+    # else_sequence_branch = py_trees.composites.Sequence(name="Else Sequence", memory=True)
+    # else_sequence_branch.add_children([activate_action_2, open_action])
+
+    # selector.add_children([if_sequence, else_sequence_branch])
+
+    # selector.setup_with_descendants()
+
+
+    # root = py_trees.composites.Selector("If Else", memory=True)
+    # condition = temperature_check
+    # if_branch = close_action
+    # else_branch = open_action
+
+    # if_sequence = py_trees.composites.Sequence("If Block", memory=True)
+    # if_sequence.add_children([condition, if_branch])
+
+    # root.add_children([if_sequence, else_branch])
+    # root.setup_with_descendants()
+
+
+    # json_str = '''
+    # {
+    #     "sequence": [ "activate_gripper()", "open_gripper()", "close_gripper()", "activate_gripper()" ]
+    # }
+    # '''
+
+    # result = LlmHelper.is_if_else_statement(json_str)
+    # print(result)
+
+    # result = LlmHelper.is_sequence_statement(json_str)
+    # print(result)
+
+    # data = json.loads(json_str)
+
+    # sequence_request_model = SequenceLlmRequestModel(
+    #     sequence_actions=data["sequence"]
+    # )
+
+    # print(sequence_request_model)
+
+    # class_map = {
+    #     "activate_gripper": ActivateAction,
+    #     "open_gripper": OpenAction,
+    #     "close_gripper": CloseAction
+    # }
+
+
+
+
+    # action_map = {
+    #     name: cls(robotiq_gripper_twin_controller)
+    #     for name, cls in class_map.items()
+    #     if name + "()" in sequence_request_model.sequence_actions
+    # }
+
+    # root = py_trees.composites.Sequence(name="Sequence", memory=True)
+    # for name, instance in action_map.items():
+    #    root.add_child(instance)
+
+
+    # root.setup_with_descendants()
+
+    core_behaviour_tree_controller = DynamicBehaviourTreeController(robotiq_gripper_twin_controller)
+    selector = core_behaviour_tree_controller.create_selector_composite(json_str)
+    # selector = core_behaviour_tree_controller.create_sequence_composite(json_str)
+    selector.setup_with_descendants()
+
+
+
+    while True:
+        if selector.status == py_trees.common.Status.SUCCESS:
+            print("Tree completed successfully.")
+            break
+        selector.tick_once()
         time.sleep(1)
     print("\n")
 

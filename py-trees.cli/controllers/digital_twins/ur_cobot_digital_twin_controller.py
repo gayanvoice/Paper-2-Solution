@@ -2,18 +2,18 @@ from typing import Optional, Dict, Any
 import json
 import time
 
-from controller.robotiq_gripper_twin_controller import ResponseModel
-from model.ur_cobot_twin_model import URCobotTwinModel
+from controllers.digital_twins.robotiq_gripper_digital_twin_controller import ResponseModel
+from models.digital_twins.ur_cobot_digital_twin_model import URCobotDigitalTwinModel
 
 class URCobotTwinController:
     def __init__(self, digital_twins_client: str, digital_twin_id: str):
         self.digital_twin_id = digital_twin_id
         self.digital_twins_client = digital_twins_client
 
-    def get_digital_twin(self) -> URCobotTwinModel:
+    def get_digital_twin(self) -> URCobotDigitalTwinModel:
         try:
             twin_dictionary = self.digital_twins_client.get_digital_twin(self.digital_twin_id)
-            return URCobotTwinModel.from_dict(twin_dictionary)
+            return URCobotDigitalTwinModel.from_dict(twin_dictionary)
         except Exception as e:
             print(f"get digital twin error: {e}")
             return None

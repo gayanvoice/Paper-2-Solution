@@ -28,16 +28,19 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ActionBehaviour.py" />
     <Compile Include="behaviours\actions\robotiq_gripper\close_action.py" />
     <Compile Include="behaviours\actions\robotiq_gripper\open_action.py" />
     <Compile Include="behaviours\actions\robotiq_gripper\activate_action.py" />
-    <Compile Include="controller\ur_cobot_twin_controller.py" />
-    <Compile Include="controller\robotiq_gripper_twin_controller.py" />
-    <Compile Include="enums\status_enum.py" />
-    <Compile Include="model\behaviour_trees\response_model.py" />
-    <Compile Include="model\ur_cobot_twin_model.py" />
-    <Compile Include="model\robotiq_gripper_twin_model.py" />
+    <Compile Include="behaviours\checks\temperature_check.py" />
+    <Compile Include="controllers\digital_twins\ur_cobot_digital_twin_controller.py" />
+    <Compile Include="controllers\digital_twins\robotiq_gripper_digital_twin_controller.py" />
+    <Compile Include="controllers\behaviour_trees\dynamic_behaviour_tree_controller.py" />
+    <Compile Include="helpers\llm_helper.py" />
+    <Compile Include="models\behaviour_trees\response_model.py" />
+    <Compile Include="models\digital_twins\ur_cobot_digital_twin_model.py" />
+    <Compile Include="models\digital_twins\robotiq_gripper_digital_twin_model.py" />
+    <Compile Include="models\llm\sequence_llm_request_model.py" />
+    <Compile Include="models\llm\conditional_llm_request_model.py" />
     <Compile Include="py_trees.cli.py" />
   </ItemGroup>
   <ItemGroup>
@@ -58,11 +61,16 @@
     <Folder Include="behaviours\actions\robotiq_gripper\" />
     <Folder Include="behaviours\checks\" />
     <Folder Include="behaviours\actions\" />
-    <Folder Include="model\" />
-    <Folder Include="controller\" />
-    <Folder Include="enums\" />
-    <Folder Include="model\behaviour_trees\" />
+    <Folder Include="controllers\digital_twins\" />
+    <Folder Include="controllers\gremlin\" />
+    <Folder Include="controllers\behaviour_trees\" />
+    <Folder Include="models\" />
+    <Folder Include="controllers\" />
+    <Folder Include="helpers\" />
+    <Folder Include="models\behaviour_trees\" />
     <Folder Include="behaviours\" />
+    <Folder Include="models\digital_twins\" />
+    <Folder Include="models\llm\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
